@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -225,8 +227,19 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent pointer-events-none" />
+    <>
+      <Helmet>
+        <title>Займы онлайн - Сравнение условий от 50+ МФО | Быстрое одобрение за 5 минут</title>
+        <meta name="description" content="⭐ Лучшие займы онлайн 2024: сравните условия от 50+ МФО. Быстрое одобрение за 5 минут, деньги на карту мгновенно. Займы без отказа, первый займ 0%, без проверки КИ." />
+        <meta name="keywords" content="займ онлайн, быстрый займ, микрозайм, займ без отказа, займ на карту, микрозайм онлайн, займ без проверки, первый займ 0%" />
+        <meta property="og:title" content="Займы онлайн - Быстрое одобрение за 5 минут" />
+        <meta property="og:description" content="Сравните условия от 50+ МФО. Займы без отказа, первый займ под 0%." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://yoursite.com/" />
+      </Helmet>
+
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent pointer-events-none" />
       
       <div className="relative">
         <header className="glass-card border-b border-white/5 sticky top-0 z-50 backdrop-blur-2xl">
@@ -428,9 +441,11 @@ export default function Index() {
                     Получить займ
                     <Icon name="ArrowRight" size={16} className="ml-2" />
                   </Button>
-                  <Button variant="outline" size="icon">
-                    <Icon name="Info" size={16} />
-                  </Button>
+                  <Link to={`/loan/${loan.id}`}>
+                    <Button variant="outline" size="icon">
+                      <Icon name="Info" size={16} />
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}
@@ -633,5 +648,6 @@ export default function Index() {
         </footer>
       </div>
     </div>
+    </>
   );
 }

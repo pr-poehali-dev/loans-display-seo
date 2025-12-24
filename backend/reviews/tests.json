@@ -1,0 +1,10 @@
+{
+  "tests": [
+    {
+      "name": "Получение отзывов по займу",
+      "method": "GET",
+      "path": "/?loan_id=1",
+      "expectedStatus": 200
+    }
+  ]
+}
