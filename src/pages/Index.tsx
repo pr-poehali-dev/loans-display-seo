@@ -293,6 +293,51 @@ export default function Index() {
             </div>
           </div>
 
+          <Card className="glass-card mb-12 overflow-hidden animate-scale-in">
+            <div className="relative bg-gradient-to-r from-accent via-primary to-secondary p-8 md:p-12">
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzAtOS45NC04LjA2LTE4LTE4LTE4UzAgOC4wNiAwIDE4czguMDYgMTggMTggMThjNC45NyAwIDkuNDctMiAxMi43Mi01LjE3QzMzLjk3IDI3LjQ3IDM2IDIzIDM2IDE4em0tMTggMTVjLTguMjggMC0xNS02LjcyLTE1LTE1czYuNzItMTUgMTUtMTUgMTUgNi43MiAxNSAxNS02LjcyIDE1LTE1IDE1eiIvPjwvZz48L2c+PC9zdmc+')] opacity-20" />
+              <div className="relative z-10 text-center">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6 animate-glow">
+                  <Icon name="Gift" size={40} className="text-white" />
+                </div>
+                <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  Розыгрыш 20 000 ₽!
+                </h3>
+                <p className="text-xl text-white/90 mb-6 max-w-2xl mx-auto">
+                  Подпишись на наш Telegram-канал и участвуй в розыгрыше. Победитель получит 20 000 рублей на карту!
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto"
+                    onClick={() => window.open('https://t.me/supportzaiminfo', '_blank')}
+                  >
+                    <Icon name="Send" size={24} className="mr-3" />
+                    Участвовать в конкурсе
+                  </Button>
+                  <div className="flex items-center gap-2 text-white/80">
+                    <Icon name="Users" size={20} />
+                    <span className="text-sm">Уже участвуют 1 247 человек</span>
+                  </div>
+                </div>
+                <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/70">
+                  <div className="flex items-center gap-2">
+                    <Icon name="CheckCircle2" size={16} />
+                    <span>Бесплатное участие</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="CheckCircle2" size={16} />
+                    <span>Честный розыгрыш</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="CheckCircle2" size={16} />
+                    <span>Итоги каждый месяц</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+
           <div className="flex items-center justify-between mb-6">
             <Button
               variant="outline"
