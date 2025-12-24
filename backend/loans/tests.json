@@ -1,0 +1,16 @@
+{
+  "tests": [
+    {
+      "name": "Получение списка займов",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Получение займа по ID",
+      "method": "GET",
+      "path": "/?id=1",
+      "expectedStatus": 200
+    }
+  ]
+}

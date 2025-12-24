@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -151,6 +151,8 @@ const faqData = [
   }
 ];
 
+const API_URL = 'https://functions.poehali.dev/2e78ece3-1fe5-4e54-9183-6ffd1ab6e6e4';
+
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAmount, setSelectedAmount] = useState([50000]);
@@ -158,8 +160,43 @@ export default function Index() {
   const [sortBy, setSortBy] = useState('rating');
   const [compareList, setCompareList] = useState<number[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const [loans, setLoans] = useState<Loan[]>(mockLoans);
+  const [loading, setLoading] = useState(true);
 
-  const filteredLoans = mockLoans
+  useEffect(() => {
+    const loadLoans = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        const transformedLoans = data.map((loan: any) => ({
+          id: loan.id,
+          name: loan.name,
+          logo: loan.logo,
+          amount: { min: loan.amount_min, max: loan.amount_max },
+          term: { min: loan.term_min, max: loan.term_max },
+          rate: loan.rate,
+          approvalRate: loan.approval_rate,
+          rating: loan.rating,
+          reviews: loan.reviews,
+          features: loan.features,
+          requirements: loan.requirements,
+          color: loan.color,
+          clicks: loan.clicks,
+          conversions: loan.conversions
+        }));
+        setLoans(transformedLoans);
+      } catch (error) {
+        console.error('Failed to load loans:', error);
+        setLoans(mockLoans);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadLoans();
+  }, []);
+
+  const filteredLoans = loans
     .filter(loan => {
       const matchesSearch = loan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         loan.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
